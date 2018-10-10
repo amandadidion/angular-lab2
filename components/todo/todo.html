@@ -1,0 +1,21 @@
+<main class="main">
+<h1>TODO List</h1>
+<p>A place to store the things you have to do!</p>
+
+<input type="text" class="filter" placeholder="Filter your to-dos" ng-model="$ctrl.filter" />
+
+<ol>
+    <li ng-repeat="task in $ctrl.tasks | filter: $ctrl.filter" ng-class="{strikeout: !task.output}">
+    <button class="complete" ng-if="task.output" ng-click="$ctrl.completeTask(task)">complete</button>
+        {{task.item}} 
+        <span class="close"><img src="delete.png" ng-click="$ctrl.removeTask($index)"><span></li>
+    </li>
+</ol>
+
+<div class="bottom">
+    <input type="text" class="list" placeholder="Add your to do" ng-model="$ctrl.newTask" />
+    <button class="add" ng-click="$ctrl.addTask()">Add </button>
+</div>
+</main>
+
+<!-- contenteditable="true" ng-model="task"  -->
